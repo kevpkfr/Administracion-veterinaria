@@ -1,0 +1,26 @@
+// src/data/mockData.js
+export const mockFormData = {
+ nombreNegocio: "",
+ descripcion: "",
+ rubro: "",
+ direccion: "",
+ ciudad: "",
+ telefono: "",
+ correo: "",
+ horarioApertura: "",
+ horarioCierre: "",
+ diasAtencion: [],
+ metodosPago: {
+   tarjeta: false,
+   efectivo: false,
+   transferencia: false,
+   otros: "",
+ },
+ facebook: "",
+ instagram: "",
+ twitter: "",
+ sitioWeb: "",
+ whatsapp: "",
+ telegram: "",
+ color: "#1E40AF",
+};
