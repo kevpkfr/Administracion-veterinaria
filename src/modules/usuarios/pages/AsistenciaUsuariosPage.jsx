@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const AsistenciaUsuariosPage = () => {
-  const [asistencia, setAsistencia] = useState([
+  const [asistencia] = useState([
     { id: 1, nombre: "Dr. Juan Pérez", estado: "Presente" },
     { id: 2, nombre: "Ana López", estado: "Ausente" },
   ]);

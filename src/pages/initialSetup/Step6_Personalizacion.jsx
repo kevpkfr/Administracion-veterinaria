@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Step6_Personalizacion = ({ nextStep, prevStep }) => {
   const [color, setColor] = useState("#1E40AF");
-  const [imagenFondo, setImagenFondo] = useState(null);
+  const [, setImagenFondo] = useState(null);
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState("");
 

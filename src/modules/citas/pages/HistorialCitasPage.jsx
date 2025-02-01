@@ -10,14 +10,29 @@ const ModalDetalles = ({ cita, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
       <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-lg">
-        <h3 className="text-xl md:text-2xl font-bold mb-4 text-blue-600">📋 Detalles de la Cita</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-4 text-blue-600">
+          📋 Detalles de la Cita
+        </h3>
         <div className="space-y-3 text-sm md:text-base">
-          <p><strong className="text-gray-800">Paciente:</strong> {cita.paciente}</p>
-          <p><strong className="text-gray-800">Fecha:</strong> {cita.fecha}</p>
-          <p><strong className="text-gray-800">Hora:</strong> {cita.hora}</p>
-          <p><strong className="text-gray-800">Veterinario:</strong> {cita.veterinario}</p>
-          <p><strong className="text-gray-800">Motivo:</strong> {cita.motivo}</p>
-          <p><strong className="text-gray-800">Estado:</strong> {cita.estado}</p>
+          <p>
+            <strong className="text-gray-800">Paciente:</strong> {cita.paciente}
+          </p>
+          <p>
+            <strong className="text-gray-800">Fecha:</strong> {cita.fecha}
+          </p>
+          <p>
+            <strong className="text-gray-800">Hora:</strong> {cita.hora}
+          </p>
+          <p>
+            <strong className="text-gray-800">Veterinario:</strong>{" "}
+            {cita.veterinario}
+          </p>
+          <p>
+            <strong className="text-gray-800">Motivo:</strong> {cita.motivo}
+          </p>
+          <p>
+            <strong className="text-gray-800">Estado:</strong> {cita.estado}
+          </p>
         </div>
         <button
           className="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors w-full md:w-auto"
@@ -31,8 +46,12 @@ const ModalDetalles = ({ cita, onClose }) => {
 };
 
 const HistorialCitasPage = () => {
-  const [historial, setHistorial] = useState(citasMockData);
-  const [filtro, setFiltro] = useState({ paciente: "", veterinario: "", fecha: "" });
+  const [historial] = useState(citasMockData);
+  const [filtro, setFiltro] = useState({
+    paciente: "",
+    veterinario: "",
+    fecha: "",
+  });
   const [citaSeleccionada, setCitaSeleccionada] = useState(null);
 
   const handleFiltroChange = (e) => {
@@ -41,8 +60,12 @@ const HistorialCitasPage = () => {
 
   const citasFiltradas = historial.filter((cita) => {
     return (
-      (filtro.paciente === "" || cita.paciente.toLowerCase().includes(filtro.paciente.toLowerCase())) &&
-      (filtro.veterinario === "" || cita.veterinario.toLowerCase().includes(filtro.veterinario.toLowerCase())) &&
+      (filtro.paciente === "" ||
+        cita.paciente.toLowerCase().includes(filtro.paciente.toLowerCase())) &&
+      (filtro.veterinario === "" ||
+        cita.veterinario
+          .toLowerCase()
+          .includes(filtro.veterinario.toLowerCase())) &&
       (filtro.fecha === "" || cita.fecha === filtro.fecha)
     );
   });
@@ -64,18 +87,28 @@ const HistorialCitasPage = () => {
     doc.text("📜 Historial de Citas", 10, 10);
     doc.autoTable({
       head: [["Paciente", "Fecha", "Hora", "Veterinario", "Estado"]],
-      body: citasFiltradas.map((cita) => [cita.paciente, cita.fecha, cita.hora, cita.veterinario, cita.estado]),
+      body: citasFiltradas.map((cita) => [
+        cita.paciente,
+        cita.fecha,
+        cita.hora,
+        cita.veterinario,
+        cita.estado,
+      ]),
     });
     doc.save("historial_citas.pdf");
   };
 
   return (
     <div className="p-4 md:p-6 bg-gray-50 min-h-screen">
-      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-blue-800">📜 Historial de Citas</h2>
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-blue-800">
+        📜 Historial de Citas
+      </h2>
 
       {/* Filtros */}
       <div className="bg-white p-4 md:p-6 mb-6 shadow rounded-lg">
-        <h3 className="text-lg md:text-xl font-bold mb-4 text-gray-700">🔍 Filtrar Historial</h3>
+        <h3 className="text-lg md:text-xl font-bold mb-4 text-gray-700">
+          🔍 Filtrar Historial
+        </h3>
         <div className="grid grid-cols-1 gap-4">
           <input
             type="text"
@@ -109,10 +142,15 @@ const HistorialCitasPage = () => {
         <div className="md:hidden">
           {citasFiltradas.length > 0 ? (
             citasFiltradas.map((cita) => (
-              <div key={cita.id} className="border-b p-4 hover:bg-gray-50 transition-colors">
+              <div
+                key={cita.id}
+                className="border-b p-4 hover:bg-gray-50 transition-colors"
+              >
                 <div className="space-y-2">
                   <p className="font-semibold">{cita.paciente}</p>
-                  <p className="text-sm text-gray-600">{cita.fecha} - {cita.hora}</p>
+                  <p className="text-sm text-gray-600">
+                    {cita.fecha} - {cita.hora}
+                  </p>
                   <p className="text-sm text-gray-600">{cita.veterinario}</p>
                   <p className="text-sm">
                     Estado: <span className="font-medium">{cita.estado}</span>
@@ -148,7 +186,10 @@ const HistorialCitasPage = () => {
             </thead>
             <tbody>
               {citasFiltradas.map((cita) => (
-                <tr key={cita.id} className="border-b hover:bg-gray-50 transition-colors">
+                <tr
+                  key={cita.id}
+                  className="border-b hover:bg-gray-50 transition-colors"
+                >
                   <td className="p-3 text-center">{cita.paciente}</td>
                   <td className="p-3 text-center">{cita.fecha}</td>
                   <td className="p-3 text-center">{cita.hora}</td>
@@ -193,7 +234,12 @@ const HistorialCitasPage = () => {
       </div>
 
       {/* Modal de Detalles */}
-      {citaSeleccionada && <ModalDetalles cita={citaSeleccionada} onClose={() => setCitaSeleccionada(null)} />}
+      {citaSeleccionada && (
+        <ModalDetalles
+          cita={citaSeleccionada}
+          onClose={() => setCitaSeleccionada(null)}
+        />
+      )}
     </div>
   );
 };

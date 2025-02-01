@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const CapacitacionesUsuariosPage = () => {
-  const [capacitaciones, setCapacitaciones] = useState([
+  const [capacitaciones] = useState([
     { id: 1, titulo: "Manejo de Emergencias", fecha: "2024-02-15", instructor: "Dr. Fernández" },
     { id: 2, titulo: "Actualización en Cirugías", fecha: "2024-03-10", instructor: "Dra. Ramírez" },
   ]);

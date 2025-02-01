@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { mockFormData } from "../data/mockData";

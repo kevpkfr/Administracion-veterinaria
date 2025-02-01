@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import facturasData from "../../../data/facturasData";
 
 const FacturasPage = () => {
-  const [facturas, setFacturas] = useState(facturasData);
+  const [facturas] = useState(facturasData);
   const [filtroEstado, setFiltroEstado] = useState("Todas");
   const [busqueda, setBusqueda] = useState("");
 
