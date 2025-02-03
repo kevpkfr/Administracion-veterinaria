@@ -57,10 +57,10 @@ const InitialSetupPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6">
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-8">
-        <h2 className="text-3xl font-bold text-blue-900 text-center mb-8">Configuración Inicial</h2>
-        <div className="bg-gray-50 p-6 rounded-lg">{renderStep()}</div>
+        <h2 className="text-3xl font-bold text-[#E76F24] text-center mb-8">Configuración Inicial</h2>
+        <div className="bg-[#fdf6ef] p-6 rounded-lg">{renderStep()}</div>
       </div>
     </div>
   );

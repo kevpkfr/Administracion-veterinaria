@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Step6_Personalizacion = ({ nextStep, prevStep }) => {
-  const [color, setColor] = useState("#1E40AF");
+  const [color, setColor] = useState("#E76F24");
   const [, setImagenFondo] = useState(null);
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState("");
@@ -26,7 +26,7 @@ const Step6_Personalizacion = ({ nextStep, prevStep }) => {
   return (
     <div className="space-y-6">
       {/* Título del paso */}
-      <h3 className="text-2xl font-bold text-blue-900 mb-6">
+      <h3 className="text-2xl font-bold text-[#E76F24] mb-6">
         Paso 6: Personalización
       </h3>
 
@@ -51,7 +51,7 @@ const Step6_Personalizacion = ({ nextStep, prevStep }) => {
         <input
           type="file"
           accept="image/*"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E76F24]"
           onChange={handleImageChange}
         />
       </div>
@@ -76,13 +76,13 @@ const Step6_Personalizacion = ({ nextStep, prevStep }) => {
       {/* Botones de acción */}
       <div className="flex justify-between mt-8">
         <button
-          className="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition duration-300 transform hover:scale-105"
+          className="bg-[#FF8C42] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#E76F24] transition duration-300 transform hover:scale-105"
           onClick={prevStep}
         >
           Volver
         </button>
         <button
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105"
+          className="bg-[#FF8C42] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#E76F24] transition duration-300 transform hover:scale-105"
           onClick={handleNext}
         >
           Siguiente
