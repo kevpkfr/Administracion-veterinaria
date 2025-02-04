@@ -6,83 +6,69 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
-// Módulos adaptados
+// Módulos adaptados a la nueva información
 const moduleGroups = [
   {
-    id: "admin",
     title: "Administración General",
-    icon: "⚙️",
     modules: [
-      { name: "Datos de la Clínica", path: "/dashboard/datos-clinica" },
-      { name: "Roles y Permisos", path: "/dashboard/roles-permisos" },
-      { name: "Gestión de Usuarios", path: "/dashboard/gestion-usuarios" },
-      { name: "Diseño e Identidad", path: "/dashboard/diseno-identidad" },
-      { name: "Accesibilidad", path: "/dashboard/accesibilidad" },
+      { name: "Datos de la Clínica", path: "/dashboard/datos-clinica", icon: "🏥" },
+      { name: "Roles y Permisos", path: "/dashboard/roles-permisos", icon: "🔑" },
+      { name: "Gestión de Usuarios", path: "/dashboard/gestion-usuarios", icon: "👤" },
+      { name: "Diseño e Identidad", path: "/dashboard/diseno-identidad", icon: "🎨" },
+      { name: "Accesibilidad", path: "/dashboard/accesibilidad", icon: "♿" },
     ],
   },
   {
-    id: "gestion",
     title: "Gestión de Propietarios y Mascotas",
-    icon: "🐾",
     modules: [
-      { name: "Registro de Propietarios", path: "/dashboard/registro-propietarios" },
-      { name: "Listado de Propietarios", path: "/dashboard/listado-propietarios" },
-      { name: "Registro de Mascotas", path: "/dashboard/registro-mascotas" },
-      { name: "Listado de Mascotas", path: "/dashboard/listado-mascotas" },
-      { name: "Perfil de Mascota", path: "/dashboard/perfil-mascota" },
+      { name: "Registro de Propietarios", path: "/dashboard/registro-propietarios", icon: "👨‍👩‍👧‍👦" },
+      { name: "Listado de Propietarios", path: "/dashboard/listado-propietarios", icon: "📋" },
+      { name: "Registro de Mascotas", path: "/dashboard/registro-mascotas", icon: "🐶" },
+      { name: "Listado de Mascotas", path: "/dashboard/listado-mascotas", icon: "📜" },
+      { name: "Perfil de Mascota", path: "/dashboard/perfil-mascota", icon: "🐾" },
     ],
   },
   {
-    id: "agenda",
     title: "Agenda de Citas y Turnos",
-    icon: "📅",
     modules: [
-      { name: "Calendario de Citas", path: "/dashboard/calendario-citas" },
-      { name: "Creación de Citas", path: "/dashboard/creacion-citas" },
-      { name: "Turnos de Personal", path: "/dashboard/turnos-personal" },
-      { name: "Reprogramaciones", path: "/dashboard/reprogramaciones" },
+      { name: "Calendario de Citas", path: "/dashboard/calendario-citas", icon: "📅" },
+      { name: "Creación de Citas", path: "/dashboard/creacion-citas", icon: "➕" },
+      { name: "Turnos de Personal", path: "/dashboard/turnos-personal", icon: "👩‍⚕️" },
+      { name: "Reprogramaciones", path: "/dashboard/reprogramaciones", icon: "🔄" },
     ],
   },
   {
-    id: "historial",
     title: "Historial Clínico",
-    icon: "📋",
     modules: [
-      { name: "Registro de Consultas", path: "/dashboard/registro-consultas" },
-      { name: "Exámenes y Resultados", path: "/dashboard/examenes-resultados" },
-      { name: "Cirugías y Hospitalizaciones", path: "/dashboard/cirugias-hospitalizaciones" },
-      { name: "Reportes Clínicos", path: "/dashboard/reportes-clinicos" },
+      { name: "Registro de Consultas", path: "/dashboard/registro-consultas", icon: "📝" },
+      { name: "Exámenes y Resultados", path: "/dashboard/examenes-resultados", icon: "🔬" },
+      { name: "Cirugías y Hospitalizaciones", path: "/dashboard/cirugias-hospitalizaciones", icon: "🏨" },
+      { name: "Reportes Clínicos", path: "/dashboard/reportes-clinicos", icon: "📊" },
     ],
   },
   {
-    id: "inventario",
     title: "Logística e Inventarios",
-    icon: "📦",
     modules: [
-      { name: "Inventario de Productos", path: "/dashboard/inventario-productos" },
-      { name: "Proveedores y Compras", path: "/dashboard/proveedores-compras" },
-      { name: "Alertas de Stock", path: "/dashboard/alertas-stock" },
-      { name: "Reportes de Inventario", path: "/dashboard/reportes-inventario" },
+      { name: "Inventario de Productos", path: "/dashboard/inventario-productos", icon: "📦" },
+      { name: "Proveedores y Compras", path: "/dashboard/proveedores-compras", icon: "🚚" },
+      { name: "Alertas de Stock", path: "/dashboard/alertas-stock", icon: "⚠️" },
+      { name: "Reportes de Inventario", path: "/dashboard/reportes-inventario", icon: "📈" },
     ],
   },
   {
-    id: "rh",
     title: "Recursos Humanos",
-    icon: "👥",
     modules: [
-      { name: "Gestión de Personal", path: "/dashboard/gestion-personal" },
-      { name: "Horarios y Turnos", path: "/dashboard/horarios-turnos" },
-      { name: "Nómina y Pagos", path: "/dashboard/nomina-pagos" },
+      { name: "Gestión de Personal", path: "/dashboard/gestion-personal", icon: "👥" },
+      { name: "Horarios y Turnos", path: "/dashboard/horarios-turnos", icon: "⏰" },
+      { name: "Nómina y Pagos", path: "/dashboard/nomina-pagos", icon: "💰" },
     ],
   },
   {
-    id: "reportes",
-    title: "Reportes Generales",
-    icon: "📊",
+    title: "Reportes Generales y Estadísticas",
     modules: [
-      { name: "Panel de Control", path: "/dashboard/panel-control" },
-      { name: "Reportes Personalizados", path: "/dashboard/reportes-personalizados" },
-      { name: "Análisis de Ingresos", path: "/dashboard/analisis-ingresos" },
+      { name: "Panel de Control", path: "/dashboard/panel-control", icon: "📊" },
+      { name: "Reportes Personalizados", path: "/dashboard/reportes-personalizados", icon: "📑" },
+      { name: "Análisis de Ingresos", path: "/dashboard/analisis-ingresos", icon: "💹" },
     ],
   },
 ];
@@ -92,17 +78,9 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [expandedGroups, setExpandedGroups] = useState(moduleGroups.map(group => group.id));
+  const [expandedGroups, setExpandedGroups] = useState({}); // Estado para manejar grupos expandidos
 
   // Funciones
-  const toggleGroup = (groupId) => {
-    setExpandedGroups(prev => 
-      prev.includes(groupId)
-        ? prev.filter(id => id !== groupId)
-        : [...prev, groupId]
-    );
-  };
-
   const handleSearch = (e) => {
     e.preventDefault();
     alert(`Buscando: ${searchQuery}`);
@@ -120,6 +98,14 @@ const Dashboard = () => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  // Función para expandir/contraer grupos
+  const toggleGroup = (title) => {
+    setExpandedGroups((prev) => ({
+      ...prev,
+      [title]: !prev[title], // Cambia el estado de expansión del grupo
+    }));
   };
 
   // Datos para gráficos
@@ -166,32 +152,34 @@ const Dashboard = () => {
 
         {/* Módulos en el Sidebar */}
         <nav className="space-y-2">
-          {moduleGroups.map((group) => (
-            <div key={group.id} className="mb-2">
+          {moduleGroups.map((group, idx) => (
+            <div key={idx} className="mb-4">
+              {/* Título del grupo con botón para expandir/contraer */}
               <button
-                onClick={() => toggleGroup(group.id)}
-                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors"
+                onClick={() => toggleGroup(group.title)}
+                className="w-full flex items-center justify-between p-2 rounded-lg text-gray-700 hover:bg-orange-50 transition-colors"
               >
-                <div className="flex items-center space-x-3">
-                  <span className="text-xl">{group.icon}</span>
-                  <span className="text-sm font-medium text-gray-800">{group.title}</span>
-                </div>
+                <h3 className="text-sm font-semibold text-orange-500 uppercase tracking-wider">
+                  {group.title}
+                </h3>
                 <ChevronDownIcon
-                  className={`w-4 h-4 transform transition-transform ${
-                    expandedGroups.includes(group.id) ? "rotate-180" : ""
+                  className={`w-4 h-4 text-gray-500 transition-transform ${
+                    expandedGroups[group.title] ? "transform rotate-180" : ""
                   }`}
                 />
               </button>
-              
-              {expandedGroups.includes(group.id) && (
-                <ul className="ml-8 mt-1 space-y-1">
+
+              {/* Lista de módulos (visible si el grupo está expandido) */}
+              {expandedGroups[group.title] && (
+                <ul className="mt-2 space-y-1 pl-4">
                   {group.modules.map((module, index) => (
                     <li key={index}>
                       <button
                         onClick={() => navigate(module.path)}
-                        className="w-full text-left p-2 text-sm text-gray-600 hover:bg-orange-50 rounded-lg transition-colors"
+                        className="w-full flex items-center space-x-2 p-2 rounded-lg text-gray-700 hover:bg-orange-50 transition-colors"
                       >
-                        {module.name}
+                        <span className="text-xl">{module.icon}</span>
+                        <span className="text-sm">{module.name}</span>
                       </button>
                     </li>
                   ))}
@@ -206,10 +194,12 @@ const Dashboard = () => {
       <div className={`flex-1 transition-margin duration-300 ${isSidebarOpen ? "ml-64" : "ml-0"}`}>
         {/* Header */}
         <header className="bg-white shadow-sm p-5 flex justify-between items-center sticky top-0 z-50">
+          {/* Botón para abrir/cerrar el sidebar */}
           <button onClick={toggleSidebar} className="text-gray-500 hover:text-orange-500">
             <MenuIcon className="w-6 h-6" />
           </button>
 
+          {/* Barra de búsqueda */}
           <form onSubmit={handleSearch} className="flex items-center bg-gray-100 rounded-lg p-3 w-96 transition-all duration-300 focus-within:ring-2 ring-orange-300">
             <SearchIcon className="w-5 h-5 text-gray-400" />
             <input
@@ -221,18 +211,23 @@ const Dashboard = () => {
             />
           </form>
 
+          {/* Menú de usuario y notificaciones */}
           <div className="flex items-center space-x-6">
+            {/* Notificaciones */}
             <button className="relative text-gray-500 hover:text-orange-500 transition-colors">
               <BellIcon className="w-6 h-6" />
               <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
             </button>
 
+            {/* Perfil del usuario */}
             <div className="relative">
               <button
                 onClick={toggleProfileMenu}
                 className="flex items-center space-x-3 group focus:outline-none"
               >
-                <UserCircleIcon className="w-9 h-9 text-gray-500 group-hover:text-orange-500 transition-colors" />
+                <div className="relative">
+                  <UserCircleIcon className="w-9 h-9 text-gray-500 group-hover:text-orange-500 transition-colors" />
+                </div>
                 <div className="text-left">
                   <p className="font-semibold text-gray-800">Dr. Juan Pérez</p>
                   <p className="text-sm text-gray-500">Administrador</p>
@@ -240,6 +235,7 @@ const Dashboard = () => {
                 <ChevronDownIcon className="w-5 h-5 text-gray-500 group-hover:text-orange-500 transition-colors" />
               </button>
 
+              {/* Menú desplegable */}
               {isProfileMenuOpen && (
                 <div className="absolute right-0 mt-3 w-56 bg-white rounded-lg shadow-lg border border-gray-100">
                   <ul className="py-2">
@@ -270,11 +266,15 @@ const Dashboard = () => {
 
         {/* Contenido principal */}
         <div className="p-8">
+          {/* Bienvenida */}
           <div className="mb-10">
             <h2 className="text-3xl font-bold text-gray-800 mb-2">Bienvenido, Dr. Juan Pérez</h2>
-            <p className="text-lg text-gray-500">Gestiona tu clínica veterinaria de manera eficiente.</p>
+            <p className="text-lg text-gray-500">
+              Gestiona tu clínica veterinaria de manera eficiente.
+            </p>
           </div>
 
+          {/* Estadísticas rápidas */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-center space-x-4">
               <div className="p-4 bg-orange-50 rounded-lg">
@@ -314,6 +314,7 @@ const Dashboard = () => {
             </div>
           </div>
 
+          {/* Gráficos */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">Mascotas atendidas (últimos 6 meses)</h3>

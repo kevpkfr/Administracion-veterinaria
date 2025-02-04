@@ -7,14 +7,13 @@ import InitialSetupPage from "../pages/InitialSetupPage";
 import Dashboard from "../pages/Dashboard";
 
 // Módulos principales
-import UsuariosModule from "../modules/usuarios/UsuariosModule";
-import CitasModule from "../modules/citas/CitasModule";
-import PacientesModule from "../modules/pacientes/PacientesModule";
-import FacturacionModule from "../modules/facturacion/FacturacionModule";
-import InventarioModule from "../modules/inventario/InventarioModule";
-import EmpleadosModule from "../modules/empleados/EmpleadosModule";
-import ReportesModule from "../modules/reportes/ReportesModule";
-import ConfiguracionModule from "../modules/configuracion/ConfiguracionModule";
+import AdministracionGeneral from "../modules/administracion-general/AdministracionGeneral";
+import GestionPropietariosMascotas from "../modules/gestion-propietarios-mascotas/GestionPropietariosMascotas";
+import AgendaCitasTurnos from "../modules/agenda-citas-turnos/AgendaCitasTurnos";
+import HistorialClinico from "../modules/historial-clinico/HistorialClinico";
+import LogisticaInventarios from "../modules/logistica-inventarios/LogisticaInventarios";
+import RecursosHumanos from "../modules/recursos-humanos/RecursosHumanos";
+import ReportesGenerales from "../modules/reportes-generales/ReportesGenerales";
 
 const AppRoutes = () => {
   return (
@@ -27,14 +26,13 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />} />
 
         {/* 🔹 Módulos principales */}
-        <Route path="/dashboard/usuarios/*" element={<UsuariosModule />} />
-        <Route path="/dashboard/citas/*" element={<CitasModule />} />
-        <Route path="/dashboard/pacientes/*" element={<PacientesModule />} />
-        <Route path="/dashboard/facturacion/*" element={<FacturacionModule />} />
-        <Route path="/dashboard/inventario/*" element={<InventarioModule />} />
-        <Route path="/dashboard/empleados/*" element={<EmpleadosModule />} />
-        <Route path="/dashboard/reportes/*" element={<ReportesModule />} />
-        <Route path="/dashboard/configuracion/*" element={<ConfiguracionModule />} />
+        <Route path="/dashboard/administracion-general/*" element={<AdministracionGeneral />} />
+        <Route path="/dashboard/gestion-propietarios-mascotas/*" element={<GestionPropietariosMascotas />} />
+        <Route path="/dashboard/agenda-citas-turnos/*" element={<AgendaCitasTurnos />} />
+        <Route path="/dashboard/historial-clinico/*" element={<HistorialClinico />} />
+        <Route path="/dashboard/logistica-inventarios/*" element={<LogisticaInventarios />} />
+        <Route path="/dashboard/recursos-humanos/*" element={<RecursosHumanos />} />
+        <Route path="/dashboard/reportes-generales/*" element={<ReportesGenerales />} />
 
         {/* 🔹 Página 404 */}
         <Route path="*" element={<div className="p-4 text-center text-red-500 font-bold">404 - Página no encontrada</div>} />
