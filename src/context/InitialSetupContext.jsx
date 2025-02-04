@@ -1,5 +1,5 @@
 // src/context/InitialSetupContext.jsx
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 export const InitialSetupContext = createContext();
 
@@ -49,19 +49,9 @@ export const InitialSetupProvider = ({ children }) => {
   });
 
   // Cargar datos guardados (opcional)
-  useEffect(() => {
-    const savedData = localStorage.getItem("initialSetupForm");
-    const savedStep = localStorage.getItem("initialSetupStep");
-    if (savedData) setFormData(JSON.parse(savedData));
-    if (savedStep) setCurrentStep(Number(savedStep));
-  }, []);
-
+ 
   // Guardar datos en localStorage (opcional)
-  useEffect(() => {
-    localStorage.setItem("initialSetupForm", JSON.stringify(formData));
-    localStorage.setItem("initialSetupStep", String(currentStep));
-  }, [formData, currentStep]);
-
+ 
   const value = {
     currentStep,
     setCurrentStep,

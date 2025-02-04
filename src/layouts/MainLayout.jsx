@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { MenuIcon, XIcon, BellIcon, UserCircleIcon, CogIcon, LogoutIcon } from "@heroicons/react/outline";
+import { motion, AnimatePresence } from "framer-motion";
 
 const MainLayout = ({ children }) => {
   const location = useLocation();
@@ -90,7 +91,7 @@ const MainLayout = ({ children }) => {
       { name: "Configuración", path: "configuracion" },
     ],
     configuracion: [
-      { name: "Datos Generales", path: "datos-generales" }, // 📌 Agregado aquí
+      { name: "Datos Generales", path: "datos-generales" },
       { name: "Preferencias", path: "preferencias" },
       { name: "Seguridad", path: "seguridad" },
       { name: "Notificaciones", path: "notificaciones" },
@@ -119,16 +120,16 @@ const MainLayout = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-white">
       {/* 📌 Header */}
-      <header className="bg-blue-800 text-white shadow-lg p-4">
+      <header className="bg-orange-400 text-white shadow-lg p-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             {/* 📌 Botón para abrir/cerrar el menú en móviles */}
             {isMobile && (
               <button
                 onClick={() => setIsHeaderExpanded(!isHeaderExpanded)}
-                className="text-white p-2 rounded-md hover:bg-blue-700 transition"
+                className="text-white p-2 rounded-md hover:bg-orange-600 transition"
                 aria-label={isHeaderExpanded ? "Cerrar menú" : "Abrir menú"}
               >
                 {isHeaderExpanded ? (
@@ -152,7 +153,7 @@ const MainLayout = ({ children }) => {
                 className="flex items-center text-white hover:text-gray-200 transition"
                 aria-label="Notificaciones"
               >
-                <span className="text-lg">🔔</span>
+                <BellIcon className="w-6 h-6" />
                 {!isMobile && <span className="ml-1">Notificaciones</span>}
                 {notificaciones.some((notif) => !notif.leida) && (
                   <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
@@ -161,28 +162,36 @@ const MainLayout = ({ children }) => {
                 )}
               </button>
               {/* Lista de Notificaciones */}
-              {notificacionesAbiertas && (
-                <div className="absolute right-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg">
-                  {notificaciones.map((notif) => (
-                    <div
-                      key={notif.id}
-                      className={`p-3 border-b ${
-                        notif.leida ? "bg-gray-50" : "bg-white"
-                      }`}
-                    >
-                      <p>{notif.mensaje}</p>
-                      {!notif.leida && (
-                        <button
-                          className="text-blue-500 text-sm mt-1"
-                          onClick={() => marcarComoLeida(notif.id)}
-                        >
-                          Marcar como leída
-                        </button>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
+              <AnimatePresence>
+                {notificacionesAbiertas && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-2 w-64 bg-white text-gray-800 rounded-lg shadow-lg"
+                  >
+                    {notificaciones.map((notif) => (
+                      <div
+                        key={notif.id}
+                        className={`p-3 border-b ${
+                          notif.leida ? "bg-gray-50" : "bg-white"
+                        }`}
+                      >
+                        <p>{notif.mensaje}</p>
+                        {!notif.leida && (
+                          <button
+                            className="text-orange-500 text-sm mt-1"
+                            onClick={() => marcarComoLeida(notif.id)}
+                          >
+                            Marcar como leída
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Perfil */}
@@ -192,30 +201,38 @@ const MainLayout = ({ children }) => {
                 className="flex items-center text-white hover:text-gray-200 transition"
                 aria-label="Perfil"
               >
-                <span className="text-lg">👤</span>
+                <UserCircleIcon className="w-6 h-6" />
                 {!isMobile && <span className="ml-1">Perfil</span>}
               </button>
               {/* Menú de Perfil */}
-              {perfilAbierto && (
-                <div className="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg">
-                  <Link
-                    to="/perfil"
-                    className="block px-4 py-2 hover:bg-gray-100"
+              <AnimatePresence>
+                {perfilAbierto && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg"
                   >
-                    Ver Perfil
-                  </Link>
-                  <button
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                    onClick={() => {
-                      // Lógica para cerrar sesión
-                      console.log("Sesión cerrada");
-                      setPerfilAbierto(false);
-                    }}
-                  >
-                    Cerrar Sesión
-                  </button>
-                </div>
-              )}
+                    <Link
+                      to="/perfil"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                    >
+                      Ver Perfil
+                    </Link>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                      onClick={() => {
+                        // Lógica para cerrar sesión
+                        console.log("Sesión cerrada");
+                        setPerfilAbierto(false);
+                      }}
+                    >
+                      Cerrar Sesión
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
@@ -231,7 +248,7 @@ const MainLayout = ({ children }) => {
               <li key={index}>
                 <Link
                   to={`/dashboard/${moduleName}/${sub.path}`}
-                  className="flex items-center py-2 px-4 hover:bg-blue-700 transition rounded-md"
+                  className="flex items-center py-2 px-4 hover:bg-orange-600 transition rounded-md"
                 >
                   {sub.name}
                 </Link>
@@ -242,13 +259,13 @@ const MainLayout = ({ children }) => {
       </header>
 
       {/* 📌 Contenido Principal */}
-      <main className="flex-1 p-4 bg-gray-100">{children}</main>
+      <main className="flex-1 p-4 bg-gray-50">{children}</main>
 
       {/* 📌 Botón para volver al Dashboard */}
-      <footer className="p-4 bg-gray-700 text-white">
+      <footer className="p-4 bg-orange-400 text-white">
         <Link
           to="/dashboard"
-          className="flex items-center justify-center py-2 px-4 bg-gray-600 rounded-md hover:bg-gray-500 transition"
+          className="flex items-center justify-center py-2 px-4 bg-orange-600 rounded-md hover:bg-orange-400 transition"
         >
           🏠 Volver al Dashboard
         </Link>
